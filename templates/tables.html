@@ -1,0 +1,139 @@
+{% extends 'layouts/base.html' %}
+{% include "includes/navigation.html" %} 
+
+
+
+{% block title %} Tables {% endblock title %}
+
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <h6>Prediction Result</h6>
+          </div>
+          
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+              <form action="/table" method="POST">
+                <div class="input-group">
+                  
+                  <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                  
+                  <input type="tell" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="Format: 123 456 7891" pattern="[0-9]{3} [0-9]{3} [0-9]{4}">
+                  
+                </div>
+            </form>
+            </div>
+          
+          <div class="card-body px-0 pt-0 pb-2">
+            
+            
+            <div class="table table-striped">
+              
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Phone Number</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Age</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Gender</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Plan Type</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tenure</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Device Owned</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Overdue Payment</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Bar & Suspend</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Credit Score</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Result</th>
+                    <th class="text-secondary opacity-7"></th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  {% for row in rows %}
+                  <tr>
+                    
+                  
+                    <td>
+                      <p class="text-xs text-secondary mb-0">{{row["phoneNumber"]}}</p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0">{{row["age"]}}</p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0">{{row["gender"]}}</p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0">{{row["planType"]}}</p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0">{{row["tenure"]}}</p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0">{{row["deviceOwned"]}}</p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0">{{row["overduePay"]}}</p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0">{{row["barSuspend"]}}</p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0">{{row["creditScore"]}}</p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0">{{row["resultPred"]}}</p>
+                    </td>
+
+                   
+                  </tr>
+                  {% endfor %}
+                
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    
+
+  </div>
+
+{% endblock content %}
+
+
+<!-- Specific scripts -->
+<!-- {% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        ajax: '/api/data',
+        serverSide: true,
+        columns: [
+          {data: 'phoneNumber'},
+          {data: 'age'},
+          {data: 'gender', orderable: false},
+          {data: 'planType', orderable: false},
+          {data: 'tenure'},
+          {data: 'deviceOwned'},
+          {data: 'overduePay'},
+          {data: 'barSuspend', orderable: false},
+          {data: 'creditScore', orderable: false},
+          {data: 'resultPred'}
+        ],
+      });
+    });
+  </script>
+{% endblock %} -->
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
